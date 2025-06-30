@@ -42,10 +42,10 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { email, name, password, role } = body;
+    const { email, password, role } = body;
 
     // Validación básica
-    if (!email || !name || !password) {
+    if (!email || !password) {
       return NextResponse.json({
         status: 'error',
         message: 'Email, nombre y contraseña son requeridos',
@@ -63,7 +63,6 @@ export async function POST(request) {
 
     const userData = {
       email,
-      name,
       password, // En producción, hashear la contraseña
       role: role || 'USER',
     };
